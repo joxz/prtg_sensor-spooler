@@ -7,26 +7,11 @@ pr:
 pool: Hosted Windows 2019 with VS2019
 
 steps:
-- powershell: write-output $PSVersionTable
-  displayName: 'Show PS version'
-
 - powershell: add-printerport -name "NUL:"
   displayName: 'add printer port'
 
-- powershell: get-printerport
-  displayName: 'Show Printer Ports'
-
 - powershell: Add-Printer -name "MyDummyPrinter" -Drivername "Microsoft XPS Document Writer v4" -portname "NUL:"
   displayName: 'install dummy printer'
-
-- powershell: get-printer
-  displayName: 'Show Printer'
-
-- powershell: get-service -name spooler
-  displayName: 'show spooler status'
-
-- powershell: enable-psremoting
-  displayName: 'Configuring WinRM for PowerShell'
 
 - powershell: .\prtg_sensor-spooler.ps1
   displayName: 'PRTG Sensor Windows Spooler'
