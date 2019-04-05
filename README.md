@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/john-doe1/prtg_sensor-spooler/_apis/build/status/joxz.prtg_sensor-spooler?branchName=master)](https://dev.azure.com/john-doe1/prtg_sensor-spooler/_build/latest?definitionId=1&branchName=master)
+
 # prtg_sensor-spooler
 
 Checks the Windows spooler service by printing a test page to a NUL printer.
@@ -17,5 +19,4 @@ $SessionParams.SessionOption = (New-CimSessionOption -Protocol DCOM)
 $session = New-CimSession @SessionParams -credential $cred
 
 Add-Printer -cimsession $session -name "MyDummyPrinter" -Drivername "Microsoft XPS Document Writer v4" -portname "NUL:"
-Set-Printer -cimsession $session -Name "MyDummyPrinter" -Shared $True -Published $True -ShareName "MyDummyPrinter"
 ```
