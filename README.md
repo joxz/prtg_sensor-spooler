@@ -18,5 +18,16 @@ $SessionParams.SessionOption = (New-CimSessionOption -Protocol DCOM)
 
 $session = New-CimSession @SessionParams -credential $cred
 
+Add-Printerport -Name "NUL:"
 Add-Printer -cimsession $session -name "MyDummyPrinter" -Drivername "Microsoft XPS Document Writer v4" -portname "NUL:"
 ```
+
+## Environment Variables
+
+`prtg_host` - set by PRTG when using `Set placeholders as environment variables` in the sensor settings
+
+`cimprotocol` - sets the protocol to use with the `New-Cimsession` cmdlet (`DCOM`, `WSMAN`; defaults to `WSMAN`) 
+
+## Parameters
+
+`printer` - sets the printer name (default: `MyDummyPrinter`)

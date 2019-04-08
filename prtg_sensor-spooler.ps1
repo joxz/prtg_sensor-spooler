@@ -7,11 +7,11 @@ function Out-TestPage {
     param(
         [Parameter(Mandatory=$false)]
         [string]$printer = "MyDummyPrinter",
-        
+
         [Parameter(Mandatory=$true)]
         [string]$device
     )
-    
+
     # setup cim session
     if (!$cimprotocol) {
         $cimprotocol = "WSMAN"

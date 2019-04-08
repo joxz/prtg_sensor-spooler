@@ -7,14 +7,20 @@ pr:
 pool: Hosted Windows 2019 with VS2019
 
 steps:
-- powershell: add-printerport -name "NUL:"
-  displayName: 'add printer port'
+- powershell: Add-Printerport -Name "NUL:"
+  displayName: 'Add printer port'
 
-- powershell: Add-Printer -name "MyDummyPrinter" -Drivername "Microsoft XPS Document Writer v4" -portname "NUL:"
-  displayName: 'install dummy printer'
+- powershell: Add-Printer -Name "MyDummyPrinter" -Drivername "Microsoft XPS Document Writer v4" -Portname "NUL:"
+  displayName: 'Install dummy printer'
 
 - powershell: .\prtg_sensor-spooler.ps1
-  displayName: 'PRTG Sensor Windows Spooler'
+  displayName: 'Test the actual sensor'
   env:
     prtg_host: localhost
     cimprotocol: DCOM
+
+- powershell: Install-Module -Name PSScriptAnalyzer -force
+  displayName: 'Install PSScriptAnalyzer'
+
+- powershell: Invoke-ScriptAnalyzer -path .
+  displayName: 'Run PSScriptAnalyzer'
