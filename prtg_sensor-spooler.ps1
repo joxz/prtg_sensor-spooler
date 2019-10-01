@@ -28,6 +28,9 @@ function Out-TestPage {
     Invoke-CimMethod -MethodName PrintTestPage -CimSession $session -InputObject $prt
 }
 
+
+# write PRTG sensor output
+
 write-output "<?xml version="1.0" encoding="utf-8" ?>"
 write-output "<prtg>"
 
